@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Roundtable Agenda - Promises Healthcare</title>
+    <style>
+        :root {
+            --primary-color: #0c2340; /* Deep Corporate Navy */
+            --secondary-color: #008b8b; /* Promises Teal Accent */
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header Section */
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            margin-bottom: 30px;
+            border-left: 6px solid var(--secondary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-placeholder {
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        .header-meta {
+            text-align: right;
+        }
+
+        .header-meta p {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .header-meta .date {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: var(--primary-color);
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        /* Info Section */
+        .intro-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .intro-card h2 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .intro-card p {
+            color: var(--text-light);
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .topic-box {
+            background: #f1f5f9;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .topic-box h4 {
+            font-size: 14px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .topic-box p {
+            margin-bottom: 0;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Timeline / Agenda Section */
+        .agenda-title {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: border-color 0.2s ease;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--secondary-color);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 24px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: white;
+            border: 3px solid var(--border-color);
+            z-index: 1;
+            transition: border-color 0.2s ease;
+        }
+
+        .timeline-item.active::before {
+            border-color: var(--secondary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item.active .time-badge {
+            background: var(--secondary-color);
+        }
+
+        .event-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .event-speaker {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .event-desc {
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-top: 8px;
+            background: #fafafa;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 2px solid #cbd5e1;
+        }
+
+        .panel-firms {
+            display: inline-block;
+            background: #edf2f7;
+            color: #4a5568;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        /* Footer Section */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                text-align: center;
+                flex-direction: column;
+            }
+            .header-meta {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo-placeholder">
+            <div class="logo-dot"></div>
+            PROMISES <span style="font-weight:300; color:var(--text-light);">HEALTHCARE</span>
+        </div>
+        <div class="header-meta">
+            <p class="date">23 June</p>
+            <p>Partner Roundtable</p>
+        </div>
+        <h1>Clinical-Legal Frameworks: Partner Roundtable</h1>
+    </header>
+
+    <div class="intro-card">
+        <h2>Roundtable Briefing & Core Objectives</h2>
+        <p>This exclusive interactive session bridges the critical gap between clinical psychiatric evaluation and statutory legal frameworks in private wealth management, asset protection, and dispute resolution.</p>
+        
+        <div class="topic-box">
+            <h4>Topic 1 Core Question</h4>
+            <p>What makes a capacity report defensible under cross-examination?</p>
+        </div>
+        <div class="topic-box">
+            <h4>Topic 2 Core Question</h4>
+            <p>What can the system do to support lawyers and psychiatrists in reducing undue influence for their clients?</p>
+        </div>
+    </div>
+
+    <h3 class="agenda-title">Program Agenda</h3>
+    
+    <div class="timeline">
+        <div class="timeline-item">
+            <span class="time-badge">2:45 PM</span>
+            <div class="event-title">Registration & Refreshments</div>
+            <div class="event-speaker">Venue & Hospitality courtesy of the AIA Wealth Centre Team</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-badge">3:00 PM</span>
+            <div class="event-title">Host Welcome</div>
+            <div class="event-speaker">Derrick Loh &bull; Head of Wealth Management, AIA International Wealth</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-badge">3:05 PM</span>
+            <div class="event-title">Opening Remarks</div>
+            <div class="event-speaker">Dr. Munidasa Winslow &bull; CEO, Promises Healthcare</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-badge">3:10 PM</span>
+            <div class="event-title">Roundtable Introduction</div>
+            <div class="event-speaker">Dr. Joseph Leong &bull; Senior Consultant Psychiatrist, Promises Healthcare</div>
+            <div class="event-desc">Setting the taxonomy for the session: Framing the functional vs. clinical boundaries of capacity assessments and systemic protections against undue influence.</div>
+        </div>
+
+        <div class="timeline-item active">
+            <span class="time-badge">3:25 PM</span>
+            <div class="event-title">Topic 1 Panel: Understanding Mental and Functional Capacity</div>
+            <div class="event-speaker">Moderated by Dr. Joseph Leong</div>
+            <div class="event-desc">
+                An open dialogue detailing best practices and clinical expectations under legal pressure. 
+                <br><span class="panel-firms">Lead Panel Intervenors:</span> Drew & Napier, Shook Lin & Bok, and Withers.
+            </div>
+        </div>
+
+        <div class="timeline-item active">
+            <span class="time-badge">4:10 PM</span>
+            <div class="event-title">Topic 2 Panel: Protecting Vulnerable Clients as a System</div>
+            <div class="event-speaker">Moderated by Dr. Joseph Leong</div>
+            <div class="event-desc">
+                Analyzing practical mechanisms to minimize systemic exposure to undue influence in elderly planning.
+                <br><span class="panel-firms">Lead Panel Intervenors:</span> WongPartnership, Dentons Rodyk, and Rajah & Tann.
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="time-badge">4:55 PM</span>
+            <div class="event-title">Closing Remarks</div>
+            <div class="event-speaker">Dr. Munidasa Winslow &bull; CEO, Promises Healthcare</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Promises Healthcare Pte Ltd. All rights reserved.</p>
+        <p style="font-size: 11px; margin-top: 5px; color: #94a3b8;">Strictly Confidential &mdash; Prepared for Private Strategic Distribution</p>
+    </footer>
+</div>
+
+</body>
+</html>
